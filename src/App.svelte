@@ -9,7 +9,7 @@
   let masterCurrency = defaults.currency;
 
   // Development Test Data
-  let exchangeRates = {
+  /*let exchangeRates = {
     USD: 1,
     AED: 3.672,
     ARS: 62.8363,
@@ -61,10 +61,10 @@
     UAH: 26.0262,
     UYU: 44.355,
     ZAR: 16.2085
-  };
+  };*/
 
   //Production API
-  //let exchangeRates = getExchangeRates(masterCurrency);
+  let exchangeRates = getExchangeRates(masterCurrency);
 
   async function getExchangeRates(denomination) {
     const url = `https://prime.exchangerate-api.com/v5/cd08a31a4b50cbf89c21208b/latest/${denomination}`;
