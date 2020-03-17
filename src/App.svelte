@@ -9,7 +9,7 @@
   let masterCurrency = defaults.currency;
 
   // Development Test Data
-  /*let exchangeRates = {
+  /* exchangeRates = {
     USD: 1,
     AED: 3.672,
     ARS: 62.8363,
@@ -119,11 +119,12 @@
     <h1>{name}</h1>
   </header>
 </section>
+
 {#await exchangeRates}
   <h2>Loading...</h2>
-{:then exchangeRates}
-  <Master bind:masterCurrency bind:masterValue {exchangeRates} />
-  <Main bind:masterCurrency bind:masterValue {exchangeRates} />
+{:then rates}
+  <Master bind:masterCurrency bind:masterValue {rates} />
+  <Main bind:masterCurrency bind:masterValue {rates} />
 {:catch error}
   <h2 class="error">Oops! Something went wrong.</h2>
   <p>{error}</p>

@@ -1,7 +1,7 @@
 <script>
   import Input from "./Components/Input.svelte";
   import Select from "./Components/Select.svelte";
-  export let masterCurrency, masterValue, exchangeRates;
+  export let masterCurrency, masterValue, rates;
 </script>
 
 <style>
@@ -14,6 +14,6 @@
 </style>
 
 <section>
-  <Select bind:value={masterCurrency} data={exchangeRates} />
+  <Select bind:value={masterCurrency} data={rates} />
   <Input bind:value={masterValue} />
 </section>

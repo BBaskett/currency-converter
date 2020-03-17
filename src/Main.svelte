@@ -1,7 +1,7 @@
 <script>
   import { fade } from "svelte/transition";
 
-  export let masterCurrency, masterValue, exchangeRates;
+  export let masterCurrency, masterValue, rates;
 </script>
 
 <style>
@@ -29,6 +29,7 @@
 
   input {
     border: none;
+    text-align: center;
   }
 
   input.positive {
@@ -42,7 +43,7 @@
 
 <section>
   <main>
-    {#each Object.entries(exchangeRates) as entry, index}
+    {#each Object.entries(rates) as entry, index}
       {#if entry[0] !== masterCurrency}
         <div>
           <input
