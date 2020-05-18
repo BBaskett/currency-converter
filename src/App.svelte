@@ -35,10 +35,11 @@
   }
 
   function handleInput(event) {
-    console.log($value, typeof $value);
     if (
       (event.code === "Period" && $value.toString().includes(".")) ||
-      event.code === "KeyE"
+      event.code === "KeyE" ||
+      event.code === "Minus" ||
+      event.code === "Equal"
     ) {
       event.preventDefault();
     }
@@ -128,7 +129,9 @@
     </section>
     <section id="conversions">
       {#each response as res}
-        <Denomination data={res} />
+        {#if res.code !== $currency}
+          <Denomination data={res} />
+        {/if}
       {/each}
     </section>
   {/await}

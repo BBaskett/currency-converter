@@ -3,7 +3,6 @@
   import { onMount } from "svelte";
   import { currency, value } from "../stores.js";
   import { slide } from "svelte/transition";
-  import { backOut } from "svelte/easing";
 
   $: conversion = ($value * data.rate).toLocaleString(undefined, {
     minimumFractionDigits: data.decimal_digits,
@@ -15,7 +14,7 @@
   div {
     display: flex;
     flex-direction: column;
-    margin-top: 1em;
+    margin: 0.5em 0;
   }
   input {
     border: none;
@@ -42,7 +41,8 @@
   }
 </style>
 
-<div transition:slide={{ easing: backOut }}>
+<div in:slide>
+  <!-- <div> -->
   <input
     class={data.rate >= 1 ? 'positive' : 'negative'}
     name={data.code}
