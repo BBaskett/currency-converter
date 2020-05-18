@@ -34,6 +34,10 @@
       });
   }
 
+  function handleInput(event) {
+    console.log(event);
+  }
+
   $: exchangeRates = getExchangeRates($currency);
 </script>
 
@@ -101,7 +105,8 @@
         min="0"
         step="0.01"
         placeholder="Enter an amount"
-        bind:value={$value} />
+        bind:value={$value}
+        on:keyup={handleInput} />
     </section>
     <section id="conversions">
       {#each response as res}
@@ -111,10 +116,10 @@
   {/await}
 </main>
 <footer>
-  <h6>
+  <h5>
     Data provided by
     <a href="https://exchangeratesapi.io/">exchangeratesapi.io</a>
     and symbols provided by
     <a href="https://gist.github.com/Fluidbyte/2973986">Fluidbyte</a>
-  </h6>
+  </h5>
 </footer>

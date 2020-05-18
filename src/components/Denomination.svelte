@@ -31,8 +31,13 @@
     color: var(--red);
   }
 
+  label {
+    font-weight: 500;
+  }
+
   span {
     font-size: 0.6em;
+    font-weight: 300;
     color: var(--grey);
   }
 </style>
