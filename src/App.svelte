@@ -35,13 +35,31 @@
   }
 
   function handleInput(event) {
-    console.log(event);
+    console.log($value, typeof $value);
+    if (
+      (event.code === "Period" && $value.toString().includes(".")) ||
+      event.code === "KeyE"
+    ) {
+      event.preventDefault();
+    }
+    if ($value.toString().length === 1 && $value === 0) {
+      $value = "";
+    }
   }
 
   $: exchangeRates = getExchangeRates($currency);
 </script>
 
 <style>
+  @media (max-width: 399px) {
+    header {
+      flex-direction: column;
+    }
+    h1 {
+      margin: 0.25em 0;
+    }
+  }
+
   header {
     display: flex;
     justify-content: center;
@@ -106,7 +124,7 @@
         step="0.01"
         placeholder="Enter an amount"
         bind:value={$value}
-        on:keyup={handleInput} />
+        on:keydown={handleInput} />
     </section>
     <section id="conversions">
       {#each response as res}
