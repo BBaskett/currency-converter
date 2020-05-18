@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap");
+
+:root {
+  font-size: 18px;
+  font-family: "Rajdhani", sans-serif;
+  --green: rgb(0, 150, 0);
+  --red: rgb(150, 0, 0);
+  --grey: rgb(150, 150, 150);
+}
+
+input,
+select {
+  font-size: 1em;
+  font-family: inherit;
+  outline: none;
+}
+
+header,
+footer {
+  text-align: center;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+a {
+  color: var(--green);
+}
+
+a:visited {
+  color: var(--green);
+}
