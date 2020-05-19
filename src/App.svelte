@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { currency, value } from "./stores.js";
   import Denomination from "./components/Denomination.svelte";
+  import Background from "./components/Background.svelte";
 
   async function getExchangeRates(base) {
     const ratesURL = `https://api.exchangeratesapi.io/latest?base=${base}`;
@@ -144,3 +145,4 @@
     <a href="https://gist.github.com/Fluidbyte/2973986">Fluidbyte</a>
   </h5>
 </footer>
+<Background />
