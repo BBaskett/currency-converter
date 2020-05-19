@@ -3,7 +3,6 @@
   import { onMount } from "svelte";
   import { currency, value } from "../stores.js";
   import { slide } from "svelte/transition";
-
   $: conversion = ($value * data.rate).toLocaleString(undefined, {
     minimumFractionDigits: data.decimal_digits,
     minimumFractionDigits: data.decimal_digits

@@ -11,6 +11,12 @@
       "https://gist.githubusercontent.com/Fluidbyte/2973986/raw/8bb35718d0c90fdacb388961c98b8d56abc392c9/Common-Currency.json";
     const codesResponse = await fetch(codesURL);
     const codesJson = await codesResponse.json();
+    // Add EUR object when the base is EUR
+    if (base === "EUR") {
+      Object.assign(ratesJson.rates, {
+        EUR: 1
+      });
+    }
     return Object.entries(ratesJson.rates)
       .map(entry => ({
         code: entry[0],
@@ -82,11 +88,18 @@
     border-radius: 10px;
     display: flex;
     justify-content: center;
+    align-items: center;
+  }
+
+  #controls span {
+    color: var(--green);
+    font-weight: 700;
+    font-size: 1.25em;
   }
 
   #master-select {
     border: 1px solid rgb(0, 0, 0);
-    margin-right: 0.5em;
+    margin: 0 0.5em;
   }
 
   #master-value {
@@ -116,6 +129,9 @@
     <h1 style="text-align: center;">Loading Interface</h1>
   {:then response}
     <section id="controls">
+      <span>
+        {Object.values(response).filter(x => x.code === $currency)[0].symbol_native}
+      </span>
       <select name="currency" id="master-select" bind:value={$currency}>
         {#each response as res}
           <option value={res.code}>{res.code}</option>
