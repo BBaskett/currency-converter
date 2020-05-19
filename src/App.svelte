@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import { currency, value } from "./stores.js";
   import Denomination from "./components/Denomination.svelte";
-  import Background from "./components/Background.svelte";
 
   async function getExchangeRates(base) {
     const ratesURL = `https://api.exchangeratesapi.io/latest?base=${base}`;
@@ -68,6 +67,10 @@
     align-items: center;
   }
 
+  footer {
+    color: rgb(255, 255, 255);
+  }
+
   img {
     height: 4em;
   }
@@ -81,6 +84,12 @@
   #controls {
     text-align: center;
     margin-bottom: 1em;
+    position: sticky;
+    top: 0;
+    padding: 1em;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.35);
+    border-radius: 10px;
   }
 
   #master-select {
@@ -145,4 +154,3 @@
     <a href="https://gist.github.com/Fluidbyte/2973986">Fluidbyte</a>
   </h5>
 </footer>
-<Background />
