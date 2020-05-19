@@ -67,10 +67,6 @@
     align-items: center;
   }
 
-  footer {
-    color: rgb(255, 255, 255);
-  }
-
   img {
     height: 4em;
   }
