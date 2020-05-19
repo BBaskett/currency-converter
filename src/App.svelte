@@ -71,12 +71,6 @@
     height: 4em;
   }
 
-  main {
-    width: 85vw;
-    max-width: 1200px;
-    margin: auto;
-  }
-
   #controls {
     text-align: center;
     margin-bottom: 1em;
@@ -86,16 +80,20 @@
     background-color: rgb(255, 255, 255);
     box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.35);
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
   }
 
   #master-select {
     border: 1px solid rgb(0, 0, 0);
+    margin-right: 0.5em;
   }
 
   #master-value {
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
     padding: 1px 0.5em;
+    flex: auto;
   }
 
   #conversions {
