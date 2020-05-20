@@ -83,16 +83,21 @@
     position: sticky;
     top: 0;
     padding: 1em;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.35);
+    background: linear-gradient(
+      to bottom,
+      var(--green),
+      50%,
+      rgb(255, 255, 255)
+    );
+    box-shadow: 0 5px 6px 2px rgba(0, 150, 0, 0.35);
     border-radius: 10px;
+    border: 1px solid var(--grey);
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   #controls span {
-    color: var(--green);
     font-weight: 700;
     font-size: 1.25em;
   }
@@ -107,6 +112,7 @@
     border-radius: 5px;
     padding: 1px 0.5em;
     flex: auto;
+    width: 100%;
   }
 
   #conversions {
