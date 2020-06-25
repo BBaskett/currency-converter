@@ -83,13 +83,8 @@
     position: sticky;
     top: 0;
     padding: 1em;
-    background: linear-gradient(
-      to bottom,
-      var(--green),
-      50%,
-      rgb(255, 255, 255)
-    );
-    box-shadow: 0 5px 6px 2px rgba(0, 150, 0, 0.35);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     border: 1px solid var(--grey);
     display: flex;
@@ -122,7 +117,8 @@
     padding: 1em 2em;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    box-shadow: 0 5px 6px 2px rgba(100, 100, 100, 0.35);
+    box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--grey);
   }
 </style>
 
