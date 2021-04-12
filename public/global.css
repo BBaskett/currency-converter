@@ -17,14 +17,12 @@ body {
   color: var(--primary);
   box-sizing: border-box;
   margin: auto;
-  width: 75vw;
-  min-width: 300px;
+  width: 90vw;
   max-width: 1200px;
 }
 
 h1 {
   font-weight: 400;
-  font-size: 2.5rem;
   margin: 0;
 }
 

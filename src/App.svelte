@@ -2,6 +2,8 @@
   export let currencies: [string], name: string, storage_name: string;
   import { BASE, MASTER } from "./stores";
   import { onMount } from "svelte";
+  import numeral from "numeral";
+  import { slide } from "svelte/transition";
 
   let error;
   const storage = window.localStorage.getItem(storage_name);
@@ -51,12 +53,14 @@
   {:then data}
     <div id="conversions">
       {#each currencies as currency}
-        <form>
+        <form transition:slide>
           <input
-            type="number"
+            type="text"
             name={currency}
             class={data.conversion_rates[currency] > 1 ? "good" : "bad"}
-            value={data.conversion_rates[currency] * $MASTER}
+            value={numeral(data.conversion_rates[currency] * $MASTER).format(
+              "0,0.00"
+            )}
             readonly
           />
           <label for={currency}>{currency}</label>
