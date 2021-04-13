@@ -166,7 +166,14 @@ const app = new App({
       "ZMW",
     ],
     name: "Svelte Currency Converter",
-    storage_name: "svelte_currency_converter_default",
+    storage: {
+      currency: "scc_currency",
+      value: "scc_value",
+    },
+    defaults: {
+      BASE: "USD",
+      MASTER: 1,
+    },
   },
 });
 

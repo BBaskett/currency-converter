@@ -1,15 +1,32 @@
 <script lang="ts">
-  export let currencies: [string], name: string, storage_name: string;
+  export let currencies: [string],
+    defaults: Defaults,
+    name: string,
+    storage: Storage;
   import { BASE, MASTER } from "./stores";
   import { onMount } from "svelte";
   import numeral from "numeral";
   import { slide } from "svelte/transition";
 
+  interface Defaults {
+    BASE: string;
+    MASTER: number;
+  }
+
+  interface Storage {
+    currency: string;
+    value: number;
+  }
+
   let error;
-  const storage = window.localStorage.getItem(storage_name);
+  const stor = {
+    cur: window.localStorage.getItem(storage.currency),
+    val: window.localStorage.getItem(storage.value.toString()),
+  };
 
   // Update storage when currency changes
-  $: window.localStorage.setItem(storage_name, $BASE);
+  $: window.localStorage.setItem(storage.currency, $BASE);
+  $: window.localStorage.setItem(storage.value, $MASTER.toString());
 
   async function getExchangeRates(base: string) {
     const key: string = "cd08a31a4b50cbf89c21208b";
@@ -24,10 +41,19 @@
     }
   }
 
+  function reset() {
+    BASE.set(defaults.BASE);
+    MASTER.set(defaults.MASTER);
+    return console.log("Reset");
+  }
+
   onMount(async () => {
-    if (storage) {
+    if (stor.cur) {
       // Initialize currency default from storage
-      BASE.set(storage);
+      BASE.set(stor.cur);
+    }
+    if (stor.val) {
+      MASTER.set(Number(stor.val));
     }
   });
 </script>
@@ -44,6 +70,7 @@
         <option value={currency}>{currency}</option>
       {/each}
     </select>
+    <button on:click={reset}>reset</button>
   </div>
   {#if error}
     <p>Error: {error}</p>
