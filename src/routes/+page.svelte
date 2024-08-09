@@ -9,7 +9,7 @@
   import { CURRENCIES } from "$lib/index";
 
   // JS/TS Stuff
-  let masterControlValue: string = 1;
+  let masterControlValue: string = "1";
   let masterControlCurrency: string = "USD";
 </script>
 
