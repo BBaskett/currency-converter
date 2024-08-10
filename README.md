@@ -4,4 +4,4 @@
 
 Update the `master currency` and `master value` to see the conversion rates update
 
-![screenshot](./assets/add.png)
+![screenshot](./assets/controls.png)
