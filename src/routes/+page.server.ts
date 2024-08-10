@@ -1,4 +1,6 @@
-/** @type {import('./$types').PageLoad} */
+/** @type {import('./$types').PageServerLoad} */
+
+export const prerender = true;
 
 export async function load({ params }) {
   const response = await fetch(

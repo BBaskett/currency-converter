@@ -24,7 +24,9 @@
   },
   "type": "module",
   "dependencies": {
+    "devalue": "^5.0.0",
     "papercss": "^1.9.2",
     "spaper": "^1.4.0"
-  }
+  },
+  "prepare": "svelte-kit sync"
 }

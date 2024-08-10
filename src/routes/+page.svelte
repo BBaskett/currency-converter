@@ -1,17 +1,19 @@
 <script lang="ts">
-  // Dependencies
-  import "papercss/dist/paper.min.css";
-  import { Select, Form, NumberInput, Input, Navbar, Button } from "spaper";
-
-  // Svelte Stuff
   /** @type {import('./$types').PageData} */
   export let data;
+
+  import "../app.css";
+  import "papercss/dist/paper.min.css";
+  import { Select, Form, NumberInput, Input, Navbar, Button } from "spaper";
   import { CURRENCIES } from "$lib/index";
 
-  // JS/TS Stuff
   let masterControlValue: string = "1";
   let masterControlCurrency: string = "USD";
 </script>
+
+<svelte:head>
+  <title>Currency Converter</title>
+</svelte:head>
 
 <body class="px-8 py-2">
   <Navbar class="mb-8">
@@ -44,9 +46,9 @@
           (Number(masterControlValue) * _conversion).toFixed(2)
         )}
 
-        <Form class="currencyWrapper">
+        <Form class="currencyWrapper text-center">
           <NumberInput
-            class="m-2"
+            class="m-2 text-center"
             label={CURRENCY_OUTPUT}
             controls={false}
             value={_value}
