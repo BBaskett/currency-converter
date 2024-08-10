@@ -6,9 +6,9 @@
 
 # Dependencies
 node_modules
-*.config.js
-*.config.ts
-tsconfig.json
+#*.config.js
+#*.config.ts
+#tsconfig.json
 
 # OS
 .DS_Store
