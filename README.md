@@ -1,4 +1,4 @@
-### A simple, minimalist currency conversion calculator.
+# A simple, minimalist currency conversion calculator.
 
 ## Controls
 
