@@ -674,7 +674,7 @@ const CURRENCIES = [
 ];
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { data } = $$props;
-  let masterControlValue = 1;
+  let masterControlValue = "1";
   let masterControlCurrency = "USD";
   if ($$props.data === void 0 && $$bindings.data && data !== void 0) $$bindings.data(data);
   let $$settled;
