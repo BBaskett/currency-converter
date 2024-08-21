@@ -2,8 +2,7 @@ name: build-and-deploy-to-github-pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ['main']
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -24,16 +23,13 @@ jobs:
     runs-on: unbutu-latest
     steps:
       - name: install yarn.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+        run: npm install yarn
       - name: checkout
         uses: actions/checkout@v4
       - name: install dependencies
-        run: npm install
+        run: yarn install
       - name: build svelte site
-        run: npm build
+        run: yarn build
   deploy-to-github-pages:
     # Job dependencies
     needs: build-svelte-site
