@@ -1,14 +1,22 @@
 <script lang="ts">
   /** @type {import('./$types').PageData} */
-  export let data;
+  export let data: Array<object>;
 
   import "../app.css";
   import "papercss/dist/paper.min.css";
   import { Select, Form, NumberInput, Input, Navbar, Button } from "spaper";
-  import { CURRENCIES } from "$lib/index";
+  import { CURRENCIES } from "$lib/currency";
 
   let masterControlValue: string = "1";
   let masterControlCurrency: string = "USD";
+
+  async function updateConversionRates() {
+    const response = await fetch(
+      `/api/conversion-rates?masterControlCurrency=${masterControlCurrency}`
+    );
+    const json = await response.json();
+    return (data = json);
+  }
 </script>
 
 <svelte:head>
@@ -32,7 +40,11 @@
 
   <main class="flex flex-wrap flex-col">
     <Form class="flex justify-center items-center mb-10">
-      <Select class="mr-4" bind:value={masterControlCurrency}>
+      <Select
+        class="mr-4"
+        bind:value={masterControlCurrency}
+        on:change={updateConversionRates}
+      >
         {#each CURRENCIES as CURRENCY_MASTER}
           <option value={CURRENCY_MASTER}>{CURRENCY_MASTER}</option>
         {/each}
@@ -41,7 +53,7 @@
     </Form>
     <section class="flex flex-wrap justify-center">
       {#each CURRENCIES as CURRENCY_OUTPUT}
-        {@const _conversion = data.conversion_rates[CURRENCY_OUTPUT]}
+        {@const _conversion = data[CURRENCY_OUTPUT]}
         {@const _value = Number(
           (Number(masterControlValue) * _conversion).toFixed(2)
         )}
