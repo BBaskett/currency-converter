@@ -24,13 +24,13 @@ jobs:
         run: yarn install
       - name: build svelte site
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
+          BASE_PATH: "/${{ github.event.repository.name }}"
         run: |
           yarn build
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/'
+          path: "build"
   deploy-to-github-pages:
     needs: build-svelte-site
     runs-on: ubuntu-latest
