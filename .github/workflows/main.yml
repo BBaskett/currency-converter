@@ -14,9 +14,20 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build-svelte-site:
+    runs-on: unbutu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: install dependencies
+        run: yarn install
+      - name: build svelte site
+        run: yarn build
+  deploy-to-github-pages:
+    # Job dependencies
+    needs: build-svelte-site
     runs-on: ubuntu-latest
-    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    # GitHub pages permissions
     permissions:
       contents: read
       pages: write
@@ -25,18 +36,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: install dependencies
-        run: yarn install
-      - name: build svelte site
-        run: yarn build
       - name: setup pages
         uses: actions/configure-pages@v5
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build'
+          path: 'build/'
       - name: deploy to github pages
         id: deployment
         uses: actions/deploy-pages@v4
