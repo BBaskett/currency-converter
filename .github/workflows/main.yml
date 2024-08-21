@@ -30,9 +30,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: install dependencies
-        uses: yarn install
+        run: yarn install
       - name: build svelte site
-        uses: yarn build
+        run: yarn build
       - name: setup pages
         uses: actions/configure-pages@v5
       - name: upload artifact
