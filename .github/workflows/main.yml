@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   build-svelte-site:
-    runs-on: unbutu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: install yarn.js
         run: npm install yarn
