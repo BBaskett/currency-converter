@@ -17,12 +17,17 @@ jobs:
   build-svelte-site:
     runs-on: unbutu-latest
     steps:
+      - name: install yarn.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
       - name: checkout
         uses: actions/checkout@v4
       - name: install dependencies
-        run: yarn install
+        run: npm install
       - name: build svelte site
-        run: yarn build
+        run: npm build
   deploy-to-github-pages:
     # Job dependencies
     needs: build-svelte-site
