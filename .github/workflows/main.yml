@@ -2,10 +2,15 @@ name: build-and-deploy-to-github-pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ["master"]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+# GitHub pages permissions
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -15,8 +20,10 @@ concurrency:
 
 jobs:
   build-svelte-site:
-    runs-on: unbutu-latest
+    runs-on: ubuntu-latest
     steps:
+      - name: install yarn.js
+        run: npm install yarn
       - name: checkout
         uses: actions/checkout@v4
       - name: install dependencies
@@ -27,11 +34,6 @@ jobs:
     # Job dependencies
     needs: build-svelte-site
     runs-on: ubuntu-latest
-    # GitHub pages permissions
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
